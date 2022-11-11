@@ -3,14 +3,18 @@ module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
     extend: {
+      fontFamily: {
+        markpro: "'markpro','Arial',sans-serif",
+      },
       colors: {
         white: "#F9F9F9",
-        red: "#b31b1b",
-        primary: "#22C55E",
+        primary: "#ff4655",
         black: "#111111",
-        gray: "#E0E0E0",
+        pop: "#89CFF0",
+        /* gray: "#E0E0E0", */
+        /* primary: "#22C55E",*/
       },
-      //font families
+
       //font-sizes
     },
   },

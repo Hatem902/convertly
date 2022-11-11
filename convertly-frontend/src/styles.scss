@@ -5,7 +5,12 @@
 @tailwind utilities;
 
 @layer base {
+ @font-face {
+  font-family: "markpro";
+  src: url(assets/fonts/Mark-Pro.ttf) format("tff");
+ }
+ 
  body {
-  @apply bg-white text-black;
+  @apply bg-black text-white font-markpro    ;
  }
 }
