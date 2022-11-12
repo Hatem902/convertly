@@ -18,5 +18,5 @@ module.exports = {
       //font-sizes
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar-hide"), require("tailwind-scrollbar")],
 };
