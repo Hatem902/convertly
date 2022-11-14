@@ -8,8 +8,14 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeroSectionComponent implements OnInit {
   faTimes = faTimes;
-
+  file :any
   constructor() {}
-
+  selectFile(){
+    document.getElementById('file')?.click()
+  }
   ngOnInit(): void {}
+  fileSelected(event : any){
+    console.log(event.currentTarget.files)
+    this.file = event.currentTarget.files[0]
+  }
 }

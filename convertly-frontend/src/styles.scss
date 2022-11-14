@@ -17,6 +17,7 @@
 
 @layer components {
  .nav-item {
+    font-size: 16px;
   @apply p-4 px-16 pt-6 border-b-4 border-primary border-opacity-0 hover:border-opacity-100 hover:text-primary duration-200 cursor-pointer;
  }
  .hero-button {
