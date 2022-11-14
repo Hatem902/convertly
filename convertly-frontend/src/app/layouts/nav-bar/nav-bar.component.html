@@ -1,35 +1,52 @@
-<header
-  class="header sticky top-0 bg-black shadow-md flex items-center justify-center px-8 py-02 space-x-28 backdrop-blur-[10px] bg-opacity-10 z-50"
->
-  <!-- logo -->
-  <!-- <h1 class="">
-    <a href="">
-      <p class="h-6 hover:text-primary duration-200">Convertly</p>
-    </a>
-  </h1> -->
+<ul class="nav-bar">
+  <div class="hidden md:inline" *ngFor="let item of navItems">
+    <li
+      *ngIf="item.isMain"
+      class="nav-item font-extrabold tracking-[0.15em] pl-[5.72rem]"
+      [ngClass]="
+        item.name == selectedItem.name ? 'border-primary text-primary' : ''
+      "
+      (click)="selectItem(item.name)"
+    >
+      <a class="flex justify-center items-center">
+        <img
+          class="absolute mb-1 -ml-36"
+          src="../../../assets/imgs/convertly-logo.png"
+          alt=""
+        />
+        <p class="relative">{{ item.name }}</p></a
+      >
+    </li>
+    <li
+      *ngIf="!item.isMain"
+      class="nav-item"
+      [ngClass]="
+        item.name == selectedItem.name ? 'border-primary text-primary' : ''
+      "
+      (click)="selectItem(item.name)"
+    >
+      <a>{{ item.name }}</a>
+    </li>
+  </div>
 
-  <!-- navigation -->
-  <nav class="nav font-semibold text-xs tracking-widest">
-    <ul class="flex items-center">
-      <li class="nav-item border-primary text-primary">
-        <a href="">Convert</a>
-      </li>
-      <li class="nav-item">
-        <a href="">API</a>
-      </li>
-      <li class="nav-item">
-        <a href="">Formats</a>
-      </li>
-      <li class="nav-item">
-        <a href="">Pricing</a>
-      </li>
-    </ul>
-  </nav>
+  <li
+    class="nav-item hover:border-opacity-0 font-extrabold tracking-[0.15em] pl-[5.72rem] inline md:hidden"
+    [ngClass]="selectedItem.name == navItems[0].name ? 'text-primary' : ''"
+    (click)="selectItem(navItems[0].name)"
+  >
+    <a class="flex justify-center items-center">
+      <img
+        class="absolute mb-1 -ml-36"
+        src="../../../assets/imgs/convertly-logo.png"
+        alt=""
+      />
+      <p class="relative">{{ navItems[0].name }}</p></a
+    >
+  </li>
 
-  <!-- buttons --->
-  <!-- <h1 class="">
-    <a href="">
-      <p class="h-6 hover:text-primary duration-200">Convertly</p>
-    </a>
-  </h1> -->
-</header>
+  <li class="inline md:hidden">Hamburger Menu Icon placeholder</li>
+</ul>
+
+<div class="">
+  <ul class=""></ul>
+</div>
