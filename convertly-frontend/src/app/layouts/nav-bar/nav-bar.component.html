@@ -30,7 +30,7 @@
   </div>
 
   <li
-    class="nav-item hover:border-opacity-0 font-extrabold tracking-[0.15em] pl-[5.72rem] inline md:hidden"
+    class="nav-item hover:border-opacity-0 font-extrabold tracking-[0.15em] pl-12 inline md:hidden"
     [ngClass]="selectedItem.name == navItems[0].name ? 'text-primary' : ''"
     (click)="selectItem(navItems[0].name)"
   >
@@ -44,7 +44,12 @@
     >
   </li>
 
-  <li class="inline md:hidden">Hamburger Menu Icon placeholder</li>
+  <li class="inline md:hidden">
+    <fa-icon
+      [icon]="faBars"
+      class="fa-xl text-white px-3 py-1.5 rounded-2xl hover:border hover:border-primary hover:text-primary transition-all ease-in-out"
+    ></fa-icon>
+  </li>
 </ul>
 
 <div class="">
