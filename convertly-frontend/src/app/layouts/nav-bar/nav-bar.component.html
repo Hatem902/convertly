@@ -47,8 +47,22 @@
   <li class="inline md:hidden">
     <fa-icon
       [icon]="faBars"
-      class="fa-xl text-white px-3 py-1.5 rounded-2xl hover:border hover:border-primary hover:text-primary transition-all ease-in-out"
+      class="fa-xl text-white px-3 py-1.5 pb-1 rounded-xl hover:border hover:border-primary hover:text-primary transition-all ease-in-out -mr-3 relative"
     ></fa-icon>
+    <ul
+      class="flex flex-col absolute mt-5 right-8 backdrop-blur-[20px] bg-opacity-60 z-50 bg-black shadow-md"
+    >
+      <div *ngFor="let item of navItems">
+        <li
+          *ngIf="!item.isMain"
+          class="nav-item hover:border-opacity-0"
+          [ngClass]="item.name == selectedItem.name ? ' text-primary ' : ''"
+          (click)="selectItem(item.name)"
+        >
+          <a>{{ item.name }}</a>
+        </li>
+      </div>
+    </ul>
   </li>
 </ul>
 
