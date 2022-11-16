@@ -46,26 +46,26 @@
 
   <li class="inline md:hidden">
     <fa-icon
-      [icon]="faBars"
-      class="fa-xl text-white px-3 py-1.5 pb-1 rounded-xl hover:border hover:border-primary hover:text-primary transition-all ease-in-out -mr-3 relative"
+      [icon]="menuOff ? faBars : faTimes"
+      (click)="toggleMenu()"
+      class="fa-xl p-3 text-white hover:text-primary transition-all ease-in-out duration-[400ms] -mr-3 relative cursor-pointer"
     ></fa-icon>
-    <ul
-      class="flex flex-col absolute mt-5 right-8 backdrop-blur-[20px] bg-opacity-60 z-50 bg-black shadow-md"
-    >
-      <div *ngFor="let item of navItems">
-        <li
-          *ngIf="!item.isMain"
-          class="nav-item hover:border-opacity-0"
-          [ngClass]="item.name == selectedItem.name ? ' text-primary ' : ''"
-          (click)="selectItem(item.name)"
-        >
-          <a>{{ item.name }}</a>
-        </li>
-      </div>
-    </ul>
   </li>
 </ul>
 
-<div class="">
-  <ul class=""></ul>
-</div>
+<ul
+  [ngClass]="menuOff ? 'hidden' : 'flex'"
+  class="flex flex-col md:hidden fixed top-14 right-12 border-t-4 border-primary !backdrop-blur-[10px] bg-opacity-80 z-50 bg-black shadow-md font-semibold text-xs tracking-widest rounded-b-sm transition-all ease-in-out"
+>
+  <div *ngFor="let item of navItems">
+    <li
+      *ngIf="!item.isMain"
+      (click)="toggleMenu()"
+      class="nav-item hover:border-opacity-0"
+      [ngClass]="item.name == selectedItem.name ? ' text-primary ' : ''"
+      (click)="selectItem(item.name)"
+    >
+      <a>{{ item.name }}</a>
+    </li>
+  </div>
+</ul>

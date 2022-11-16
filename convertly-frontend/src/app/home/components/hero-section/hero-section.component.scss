@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer components {
+
+ .hero-button {
+   @apply px-9 py-3 mt-8 2xl:mt-16 text-3xl font-bold shadow-black hover:shadow-pop600 tracking-widest bg-gradient-to-r from-pop600 via-pop600 to-primary600/80 rounded-3xl text-black shadow-md brightness-110 hover:brightness-[1.35] hover:from-primary600 hover:to-pop600/80 transition-all duration-1000 ease-in-out
+  }
+
+}

@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer components {
+
+ .nav-item {
+  @apply p-4 px-16 pt-6 border-b-4 border-primary border-opacity-0 hover:border-opacity-100 hover:text-primary transition-all ease-in-out duration-[400ms] cursor-pointer;
+ }
+
+ .nav-bar {
+  @apply sticky top-0 bg-black shadow-md flex items-center justify-between md:justify-center px-12 backdrop-blur-[10px] bg-opacity-10 z-50 font-semibold text-xs tracking-widest;
+ }
+
+ 
+}

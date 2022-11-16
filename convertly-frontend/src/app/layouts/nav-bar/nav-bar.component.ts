@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-nav-bar',
@@ -15,8 +15,10 @@ export class NavBarComponent implements OnInit {
   ];
   selectedItem = { name: 'Convertly' };
   selectItem = (name: string) => (this.selectedItem.name = name);
-
+  menuOff = true;
+  toggleMenu = () => (this.menuOff = !this.menuOff);
   faBars = faBars;
+  faTimes = faTimes;
   constructor() {}
 
   ngOnInit(): void {}
