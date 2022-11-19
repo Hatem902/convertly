@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faFileCirclePlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-hero-section',
@@ -7,7 +7,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./hero-section.component.scss'],
 })
 export class HeroSectionComponent implements OnInit {
-  faTimes = faTimes;
+  f = faFileCirclePlus;
 
   constructor() {}
 
