@@ -1,7 +1,7 @@
 <main
   class="flex flex-col justify-center items-center bg-gradient-to-b from-black to-gray-700 px-12 pt-[3rem] 2xl:pt-20 transition-all"
 >
-  <div class="flex justify-center space-x-28 items-start">
+  <div class="flex justify-center space-x-28 items-start hero">
     <div class="flex flex-col items-start space-y-3 max-w-lg">
       <h1 class="text-3xl font-bold">
         File Conversion Made <span class="text-pop"> Quick & Easy</span>
@@ -18,19 +18,19 @@
     />
   </div>
   <button class="hero-button" (click)="selectFile()" ><!-- Icon -->Choose File</button>
-  <input type="file" class="hidden" id="file" (change)="fileSelected($event)">
-  <div class="pt-20">
-    <input type="text" readonly class="file-input" [value]="file.name">
+  <div class="grow pt-20">
+    <p class="title">File proprieties</p>
+    <p class="property">Size : {{file.size}} </p>
+    <p class="property">Type : {{file.type}}</p>
+    <p class="property">Name : {{file.name}}</p>
+    <p class="property">Last modified : {{file.lastModifiedDate | date:'medium' }}</p>
   </div>
+  <input type="file" class="hidden" id="file" (change)="fileSelected($event)">
   <div class="pt-20 section flex" *ngIf="file">
-    <div class="grow">
-      <p class="title">File proprieties</p>
-      <p class="property">Size : {{file.size}} </p>
-      <p class="property">Type : {{file.type}}</p>
-      <p class="property">Name : {{file.name}}</p>
-      <p class="property">Last modified : {{file.lastModifiedDate | date:'medium' }}</p>
-    </div>
     <div class="grow item">
+      <input type="text" readonly class="file-input" [value]="file.name">
+    </div>
+    <div class="grow item mt-2">
       <p class="title">Convert to</p>
       <select class="ext-select">
         <option>mp3</option>

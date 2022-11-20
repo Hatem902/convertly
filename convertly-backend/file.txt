@@ -1,0 +1,16 @@
+Download the “AdventureWorks2014” database. Please do the following:  
+1. Restore the Database and put it into the Full Recovery Model.  
+2. Backup it up.  
+3. Run the following query:  
+Use [AdventureWorks2014 ] 
+GO 
+select count(*) from [Person] .[Address]  
+ 
+This will tell you the number of rows in the table   
+4. Add an additional row to the table [Person].[Address]  
+5. Re turn the above query.  
+6. Wait a couple of minutes. Note the time and write it down.  
+7. Add another additional row, as per above. Re turn the above query.  
+8, Do a Point in Time restore, to the time that you have written down.  
+9. Re turn the above query.  
+ 

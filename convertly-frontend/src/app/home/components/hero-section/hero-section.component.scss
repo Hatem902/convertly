@@ -3,16 +3,18 @@
     background-color: white;
     border-radius: 18px;
     height: 6vh;
-    width: 60vw;
     color: black;
     font-weight: 600;
 }
 .section{
     width: 60vw;
+    gap: 5%;
 }
 .title{
     font-weight: 700;
     font-size: 27px;
+    display: flex;
+    justify-content: center;
 }
 .property{
     font-weight: 600;
@@ -21,14 +23,24 @@
 }
 
 .hero-button{
-    margin-top: 37px !important;
+    margin-top: 0 !important;
 }
 .ext-select{
     font-size: 23px;
     background-color: white;
     border-radius: 18px;
     height: 6vh;
-    width: 10vw;
     color: black;
     font-weight: 600;
+}
+.item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.mt-2{
+    margin-top: -38px;
+}
+.hero{
+    padding-bottom: 4vh;
 }
