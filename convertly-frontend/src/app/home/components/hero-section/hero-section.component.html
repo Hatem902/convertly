@@ -17,9 +17,19 @@
       alt="test"
     />
   </div>
-  <button class="hero-button">
-    <fa-icon [icon]="f" class="fa-sm mr-1"></fa-icon> Choose Files
+  <button class="hero-button" (click)="selectFile()">
+    <fa-icon [icon]="faFileCirclePlus" class="fa-sm mr-1"></fa-icon>
+    Choose Files
   </button>
+
+  <input
+    type="file"
+    class="hidden"
+    id="file"
+    (change)="fileSelected($event)"
+    multiple="multiple"
+  />
+  <!-- <p *ngFor="let file of files">{{ file.name }}</p> -->
   <div class="pb-80"></div>
   <div class="pb-20"></div>
 </main>
