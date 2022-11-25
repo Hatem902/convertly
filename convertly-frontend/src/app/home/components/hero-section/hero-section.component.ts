@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { faFileCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowsRotate,
+  faFileCirclePlus,
+  faFileImport,
+  faTimes,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-hero-section',
@@ -8,16 +13,19 @@ import { faFileCirclePlus } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeroSectionComponent implements OnInit {
   faFileCirclePlus = faFileCirclePlus;
-
-  file: any;
+  faArrowsRotate = faArrowsRotate;
+  faFileImport = faFileImport;
+  faTimes = faTimes;
+  files: any;
   constructor() {}
-  selectFile() {
+  selectFiles() {
     document.getElementById('file')?.click();
   }
   ngOnInit(): void {}
-  fileSelected(event: any) {
+  filesSelected(event: any) {
     console.log(event.currentTarget.files);
-    this.file = event.currentTarget.files[0];
+    this.files = event.currentTarget.files;
+    console.log(this.files?.name);
   }
   /* files: any;
   constructor() {}

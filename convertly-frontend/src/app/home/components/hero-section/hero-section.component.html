@@ -17,18 +17,49 @@
       alt="test"
     />
   </div>
-  <button class="hero-button" (click)="selectFile()">
+  <button class="hero-button" (click)="selectFiles()">
     <fa-icon [icon]="faFileCirclePlus" class="fa-sm mr-1"></fa-icon>
     Choose Files
   </button>
-
   <input
     type="file"
     class="hidden"
     id="file"
-    (change)="fileSelected($event)"
+    (change)="filesSelected($event)"
     multiple="multiple"
   />
+  <!-- <div *ngIf="files">
+    <p>{{ files[0].name }}</p>
+    <p>{{ files[1].name }}</p>
+  </div> -->
+
+  <div class="flex flex-col gap-y-2 mt-7 w-full max-w-[58rem]">
+    <div
+      *ngFor="let file of files"
+      class="flex w-full px-3 py-0.5 rounded-sm bg-gray-500 bg-opacity-20 items-center tracking-wider"
+    >
+      <div class="flex-auto w-48 truncate mr-8">
+        <fa-icon [icon]="faFileImport" class="mr-3"></fa-icon>{{ file.name }}
+      </div>
+      <div class="flex-auto w-80 truncate">
+        <fa-icon [icon]="faArrowsRotate" class="mr-3"></fa-icon> Convert to
+        <select
+          name="format"
+          id="format"
+          class="bg-transparent rounded-sm focus:outline-none font-bold"
+        >
+          <option value="... " class="text-black bg-white">...</option>
+          <option value="pdf " class="text-black bg-white">pdf</option>
+          <option class="text-black bg-white" value="jpg">jpg</option>
+          <option class="text-black bg-white" value="docx">docx</option>
+        </select>
+      </div>
+      <div class="flex-none mt-1">
+        <fa-icon [icon]="faTimes" class=""></fa-icon>
+      </div>
+    </div>
+  </div>
+
   <!-- <p *ngFor="let file of files">{{ file.name }}</p> -->
   <div class="pb-80"></div>
   <div class="pb-20"></div>
