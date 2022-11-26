@@ -24,13 +24,13 @@ export class HeroSectionComponent implements OnInit {
   faCircleArrowRight = faCircleArrowRight;
   faArrowRight = faArrowRight;
   faArrowsSpin = faArrowsSpin;
-  files: any = [
+  files: any; /*  = [
     { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
     { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
     { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
     { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
     { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
-  ];
+  ]; */
   constructor() {}
   selectFiles() {
     document.getElementById('file')?.click();
