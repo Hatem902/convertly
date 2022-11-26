@@ -45,21 +45,9 @@
       <div class="flex-auto w-44 truncate mr-2">
         <fa-icon [icon]="faArrowsRotate" class="mr-3"></fa-icon> Convert to
         <app-dropdown></app-dropdown>
-        <!-- <select
-          name="format"
-          id="format"
-          class="bg-transparent rounded-sm focus:outline-none font-bold hover:bg-black hover-ease"
-        >
-          <option value="... " class="text-black bg-white">...</option>
-          <option value="pdf " class="text-black bg-white">pdf</option>
-          <option class="text-black bg-white" value="jpg">jpg</option>
-          <option class="text-black bg-white" value="docx">docx</option>
-        </select> -->
       </div>
       <div class="flex-auto w-0 truncate text-xs tracking-widest mr-4">
-        <!-- <fa-icon [icon]="faFileImport" class="mr-3"></fa-icon> -->{{
-          file.size | bitsToKbs
-        }}
+        {{ file.size | bitsToKbs }}
       </div>
       <div class="flex-none hover:text-primary hover-ease">
         <fa-icon [icon]="faTimes"></fa-icon>
