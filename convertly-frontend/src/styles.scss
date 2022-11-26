@@ -14,3 +14,26 @@
   @apply bg-black text-white font-markpro scrollbar-track-transparent scrollbar-thumb-primary scrollbar-thin ;
  }
 }
+
+@layer components {
+
+ .hover-ease {
+  @apply transition-all ease-in-out duration-[400ms] cursor-pointer;
+ }
+
+ .nav-item {
+   @apply p-4 px-16 pt-6 border-b-4 border-primary border-opacity-0 hover:border-opacity-100 hover:text-primary hover-ease;
+ }
+
+ .nav-bar {
+   @apply sticky top-0 bg-black shadow-md flex items-center justify-between md:justify-center px-12 backdrop-blur-[10px] bg-opacity-10 z-50 font-semibold text-xs tracking-widest;
+ }
+
+.default-button {
+  @apply border border-white  px-7 py-4 tracking-widest bg-primary bg-opacity-10 hover:bg-white hover:bg-opacity-100 hover:text-primary font-bold hover-ease shadow-lg shadow-black;
+}
+.hero-button {
+  @apply px-5 py-2.5 mt-8 2xl:mt-16 text-3xl font-bold shadow-black hover:shadow-pop600 tracking-widest bg-gradient-to-r from-pop600 via-pop600 to-primary600/80 rounded-3xl text-black shadow-md brightness-110 hover:brightness-[1.35] hover:from-primary600 hover:to-pop600/80 transition-all duration-1000 ease-in-out
+}
+}
+
