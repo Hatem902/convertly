@@ -32,15 +32,15 @@ export class HeroSectionComponent implements OnInit {
     { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
   ];
   constructor() {}
-  selectFiles(id: string) {
+  browseFiles(id: string) {
     document.getElementById(id)?.click();
   }
 
   ngOnInit(): void {}
-  filesChosen(event: any) {
+  chooseFiles(event: any) {
     this.files = event.currentTarget.files;
   }
-  filesAdded(event: any) {
+  addFiles(event: any) {
     const newFiles = Array.from(event.currentTarget.files);
     const restOfFiles = Array.from(this.files).filter((file: any) => {
       return !newFiles.find(
@@ -48,9 +48,15 @@ export class HeroSectionComponent implements OnInit {
           added.name == file.name &&
           added.type == file.type &&
           added.size == file.size
+        // how to test on content?
       );
     });
 
     this.files = [...newFiles, ...restOfFiles];
+    console.log(this.files);
+  }
+  setType(name: any, type: string) {
+    var file = this.files.find((file: any) => file.name == name);
+    file.ctype = type;
   }
 }

@@ -20,7 +20,7 @@
   </div>
 
   <!-- Hero Button -->
-  <button class="hero-button" (click)="selectFiles('chooseFiles')">
+  <button class="hero-button" (click)="browseFiles('chooseFiles')">
     <fa-icon [icon]="faFileImport" class="fa-sm mr-1"></fa-icon>
     Choose Files
   </button>
@@ -28,7 +28,7 @@
     type="file"
     class="hidden"
     id="chooseFiles"
-    (change)="filesChosen($event)"
+    (change)="chooseFiles($event)"
     multiple="multiple"
   />
 
@@ -58,14 +58,14 @@
   <!-- Extra Buttons -->
   <div *ngIf="files" class="flex w-full max-w-[58rem] justify-between mt-5">
     <div class="p-6 pl-0">
-      <div class="default-button" (click)="selectFiles('addFiles')">
+      <div class="default-button" (click)="browseFiles('addFiles')">
         <fa-icon [icon]="faFileCirclePlus" class="mr-6"></fa-icon>Add Files
       </div>
       <input
         type="file"
         class="hidden"
         id="addFiles"
-        (change)="filesAdded($event)"
+        (change)="addFiles($event)"
         multiple="multiple"
       />
     </div>
