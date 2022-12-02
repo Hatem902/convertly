@@ -24,31 +24,33 @@ export class HeroSectionComponent implements OnInit {
   faCircleArrowRight = faCircleArrowRight;
   faArrowRight = faArrowRight;
   faArrowsSpin = faArrowsSpin;
-  files: any; /*  = [
+  files: any = [
     { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
     { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
     { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
     { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
     { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
-  ]; */
+  ];
   constructor() {}
-  selectFiles() {
-    document.getElementById('file')?.click();
+  selectFiles(id: string) {
+    document.getElementById(id)?.click();
   }
+
   ngOnInit(): void {}
-  filesSelected(event: any) {
-    console.log(event.currentTarget.files);
+  filesChosen(event: any) {
     this.files = event.currentTarget.files;
-    console.log(this.files?.name);
   }
-  /* files: any;
-  constructor() {}
-  selectFiles() {
-    document.getElementById('files')?.click();
+  filesAdded(event: any) {
+    const newFiles = Array.from(event.currentTarget.files);
+    const restOfFiles = Array.from(this.files).filter((file: any) => {
+      return !newFiles.find(
+        (added: any) =>
+          added.name == file.name &&
+          added.type == file.type &&
+          added.size == file.size
+      );
+    });
+
+    this.files = [...newFiles, ...restOfFiles];
   }
-  ngOnInit(): void {}
-  filesSelected(event: any) {
-    console.log(event.currentTarget.files);
-    this.files = event.currentTarget.files[0];
-  } */
 }
