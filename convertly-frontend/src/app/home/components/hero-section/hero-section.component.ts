@@ -44,4 +44,7 @@ export class HeroSectionComponent implements OnInit {
   deleteFile(name: string) {
     this.filesService.deleteFile(name);
   }
+  typesAreValid(): boolean {
+    return this.filesService.typesAreValid();
+  }
 }

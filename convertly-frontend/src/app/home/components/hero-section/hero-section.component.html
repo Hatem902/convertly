@@ -33,10 +33,10 @@
   />
 
   <!-- Files Rows -->
-  <div class="flex flex-col gap-y-5 mt-12 w-full max-w-[58rem]">
+  <div class="flex flex-col gap-y-4 mt-11 w-full max-w-[58rem]">
     <div
       *ngFor="let file of files$ | async"
-      class="flex w-full px-3 py-2 pt-3 rounded-sm bg-gray-500 bg-opacity-20 items-center tracking-wider shadow-sm shadow-black"
+      class="flex w-full px-3 py-1.5 pt-2.5 rounded-sm bg-gray-500 bg-opacity-20 items-center tracking-wider shadow-sm shadow-black"
     >
       <div class="flex-auto w-40 truncate mr-8">
         <fa-icon [icon]="faFileCircleCheck" class="mr-3"></fa-icon
@@ -61,7 +61,7 @@
   <!-- Extra Buttons -->
   <div
     *ngIf="files$ | async"
-    class="flex w-full max-w-[58rem] justify-between mt-5"
+    class="flex w-full max-w-[58rem] justify-between mt-1.5"
   >
     <div class="p-6 pl-0">
       <div class="default-button" (click)="browseFiles('addFiles')">
@@ -82,7 +82,14 @@
       </div>
     </div>
     <div class="p-6 pr-0">
-      <div class="default-button">
+      <div
+        class="default-button"
+        [ngClass]="
+          !typesAreValid()
+            ? 'text-gray-300 border-opacity-20 shadow-inner cursor-not-allowed hover:bg-primary hover:bg-opacity-10 hover:text-gray-300 hover:brightness-125 '
+            : 'border-opacity-100 bg-opacity-60 brightness-200 hover:brightness-100'
+        "
+      >
         <fa-icon [icon]="faArrowRight" class="mr-6"></fa-icon>Convert Now
       </div>
     </div>

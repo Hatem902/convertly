@@ -5,7 +5,16 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FilesService {
-  files$ = new BehaviorSubject<any>(null);
+  files$ = new BehaviorSubject<any>([
+    { name: 'hatemlamine_fileA_24' },
+    { name: 'hatemlamine_fileA_24' },
+    { name: 'hatemlamine_fileA_24' },
+    { name: 'hatemlamine_fileA_24' },
+    { name: 'hatemlamine_fileA_24' },
+    { name: 'hatemlamine_fileA_24' },
+    { name: 'hatemlamine_fileA_24' },
+    { name: 'hatemlamine_fileA_24' },
+  ]);
   allType$ = new BehaviorSubject<any>('...');
 
   getFiles(): Observable<any> {
@@ -57,5 +66,12 @@ export class FilesService {
     this.files$.next(
       this.files$.getValue().filter((file: any) => file.name != name)
     );
+  }
+  typesAreValid(): boolean {
+    {
+      return this.files$
+        .getValue()
+        .every((file: any) => file.ctype && file.ctype != '');
+    }
   }
 }
