@@ -35,7 +35,7 @@
   <!-- Files Rows -->
   <div class="flex flex-col gap-y-5 mt-12 w-full max-w-[58rem]">
     <div
-      *ngFor="let file of files"
+      *ngFor="let file of files$ | async"
       class="flex w-full px-3 py-2 pt-3 rounded-sm bg-gray-500 bg-opacity-20 items-center tracking-wider shadow-sm shadow-black"
     >
       <div class="flex-auto w-40 truncate mr-8">
@@ -44,19 +44,25 @@
       </div>
       <div class="flex-auto w-44 truncate mr-2">
         <fa-icon [icon]="faArrowsRotate" class="mr-3"></fa-icon> Convert to
-        <app-dropdown></app-dropdown>
+        <app-dropdown [name]="file.name"></app-dropdown>
       </div>
       <div class="flex-auto w-0 truncate text-xs tracking-widest mr-4">
         {{ file.size | bitsToKbs }}
       </div>
-      <div class="flex-none hover:text-primary hover-ease">
+      <div
+        class="flex-none hover:text-primary hover-ease"
+        (click)="deleteFile(file.name)"
+      >
         <fa-icon [icon]="faTimes"></fa-icon>
       </div>
     </div>
   </div>
 
   <!-- Extra Buttons -->
-  <div *ngIf="files" class="flex w-full max-w-[58rem] justify-between mt-5">
+  <div
+    *ngIf="files$ | async"
+    class="flex w-full max-w-[58rem] justify-between mt-5"
+  >
     <div class="p-6 pl-0">
       <div class="default-button" (click)="browseFiles('addFiles')">
         <fa-icon [icon]="faFileCirclePlus" class="mr-6"></fa-icon>Add Files
@@ -72,7 +78,7 @@
     <div class="p-6">
       <div class="default-button">
         <fa-icon [icon]="faArrowsSpin" class="mr-6 fa-lg"></fa-icon>Convert All
-        to <app-dropdown></app-dropdown>
+        to <app-dropdown name="convertAll"></app-dropdown>
       </div>
     </div>
     <div class="p-6 pr-0">

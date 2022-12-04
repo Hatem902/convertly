@@ -9,6 +9,7 @@ import {
   faFileImport,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
+import { FilesService } from 'src/app/shared/services/files.service';
 
 @Component({
   selector: 'app-hero-section',
@@ -24,39 +25,23 @@ export class HeroSectionComponent implements OnInit {
   faCircleArrowRight = faCircleArrowRight;
   faArrowRight = faArrowRight;
   faArrowsSpin = faArrowsSpin;
-  files: any = [
-    { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
-    { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
-    { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
-    { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
-    { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
-  ];
-  constructor() {}
+
+  files$: any = this.filesService.getFiles();
+
+  constructor(private filesService: FilesService) {}
+
+  ngOnInit(): void {}
+
   browseFiles(id: string) {
     document.getElementById(id)?.click();
   }
-
-  ngOnInit(): void {}
   chooseFiles(event: any) {
-    this.files = event.currentTarget.files;
+    this.filesService.chooseFiles(event);
   }
   addFiles(event: any) {
-    const newFiles = Array.from(event.currentTarget.files);
-    const restOfFiles = Array.from(this.files).filter((file: any) => {
-      return !newFiles.find(
-        (added: any) =>
-          added.name == file.name &&
-          added.type == file.type &&
-          added.size == file.size
-        // how to test on content?
-      );
-    });
-
-    this.files = [...newFiles, ...restOfFiles];
-    console.log(this.files);
+    this.filesService.addFiles(event);
   }
-  setType(name: any, type: string) {
-    var file = this.files.find((file: any) => file.name == name);
-    file.ctype = type;
+  deleteFile(name: string) {
+    this.filesService.deleteFile(name);
   }
 }
