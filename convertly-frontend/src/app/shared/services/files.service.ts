@@ -5,16 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FilesService {
-  files$ = new BehaviorSubject<any>([
-    { name: 'hatemlamine_fileA_24' },
-    { name: 'hatemlamine_fileA_24' },
-    { name: 'hatemlamine_fileA_24' },
-    { name: 'hatemlamine_fileA_24' },
-    { name: 'hatemlamine_fileA_24' },
-    { name: 'hatemlamine_fileA_24' },
-    { name: 'hatemlamine_fileA_24' },
-    { name: 'hatemlamine_fileA_24' },
-  ]);
+  files$ = new BehaviorSubject<any>([]);
   allType$ = new BehaviorSubject<any>('...');
 
   getFiles(): Observable<any> {
