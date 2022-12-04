@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FilesService {
-  files$ = new BehaviorSubject<any>([]);
+  files$ = new BehaviorSubject<any>(null);
   allType$ = new BehaviorSubject<any>('...');
 
   getFiles(): Observable<any> {
