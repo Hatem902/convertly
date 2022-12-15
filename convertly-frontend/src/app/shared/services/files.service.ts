@@ -14,6 +14,7 @@ export class FilesService {
 
   chooseFiles(event: any) {
     this.files$.next(Array.from(event.currentTarget.files));
+    this.allType$.next(null);
   }
 
   addFiles(event: any) {
@@ -29,6 +30,7 @@ export class FilesService {
     });
 
     this.files$.next([...newFiles, ...restOfFiles]);
+    newFiles.forEach((file: any) => (file.ctype = null));
     console.log(this.files$);
   }
 
@@ -57,12 +59,19 @@ export class FilesService {
     this.files$.next(
       this.files$.getValue().filter((file: any) => file.name != name)
     );
+    console.log(Array.from(this.files$.getValue()).length);
+  }
+  filesExist(): boolean {
+    return Array.from(this.files$.getValue()).length > 0;
   }
   typesAreValid(): boolean {
     {
-      return this.files$
-        .getValue()
-        .every((file: any) => file.ctype && file.ctype != '');
+      return !!(
+        this.filesExist() &&
+        this.files$
+          .getValue()
+          .every((file: any) => file.ctype && file.ctype != '')
+      );
     }
   }
 }

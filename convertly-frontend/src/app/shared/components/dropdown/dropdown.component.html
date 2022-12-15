@@ -3,10 +3,10 @@
   [id]="name"
   class="bg-transparent rounded-sm focus:outline-none font-bold hover:bg-black hover-ease border-b border-gray-600"
   (change)="setType()"
-  [value]="allType$ | async"
+  [value]="name == 'convertAll' && filesExist() ? (allType$ | async) : ctype"
 >
-  <option value="... " class="text-black bg-white">docx</option>
+  <option value="docx " class="text-black bg-white">docx</option>
   <option value="pdf " class="text-black bg-white">pdf</option>
   <option class="text-black bg-white" value="jpg">jpg</option>
-  <option class="text-black bg-white" value="docx">ppt</option>
+  <option class="text-black bg-white" value="ppt">ppt</option>
 </select>

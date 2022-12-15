@@ -44,7 +44,7 @@
       </div>
       <div class="flex-auto w-44 truncate mr-2">
         <fa-icon [icon]="faArrowsRotate" class="mr-3"></fa-icon> Convert to
-        <app-dropdown [name]="file.name"></app-dropdown>
+        <app-dropdown [name]="file.name" [ctype]="file.ctype"></app-dropdown>
       </div>
       <div class="flex-auto w-0 truncate text-xs tracking-widest mr-4">
         {{ file.size | bitsToKbs }}

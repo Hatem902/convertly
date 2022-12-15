@@ -37,7 +37,7 @@ export class FeaturesSectionComponent implements OnInit {
       icon: faDesktop,
       title: 'All devices supported',
       description:
-        'Convertio is browser-based and works for all platforms. There is no need to download and install any software.',
+        'Convertly is browser-based and works for all platforms. There is no need to download and install any software.',
     },
   ];
   constructor() {}
