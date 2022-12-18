@@ -35,7 +35,7 @@
   <!-- Files Rows -->
   <div class="flex flex-col gap-y-5 mt-12 w-full max-w-[58rem]">
     <div
-      *ngFor="let file of files"
+      *ngFor="let file of files;let i=index"
       class="flex w-full px-3 py-2 pt-3 rounded-sm bg-gray-500 bg-opacity-20 items-center tracking-wider shadow-sm shadow-black"
     >
       <div class="flex-auto w-40 truncate mr-8">
@@ -44,7 +44,7 @@
       </div>
       <div class="flex-auto w-44 truncate mr-2">
         <fa-icon [icon]="faArrowsRotate" class="mr-3"></fa-icon> Convert to
-        <app-dropdown></app-dropdown>
+        <app-dropdown [type]="file.type" (event)="changeSelected($event,i)"></app-dropdown>
       </div>
       <div class="flex-auto w-0 truncate text-xs tracking-widest mr-4">
         {{ file.size | bitsToKbs }}
@@ -69,7 +69,7 @@
       </div>
     </div>
     <div class="p-6 pr-0">
-      <div class="default-button">
+      <div class="default-button" (click)="convert()" >
         <fa-icon [icon]="faArrowRight" class="mr-6"></fa-icon>Convert Now
       </div>
     </div>

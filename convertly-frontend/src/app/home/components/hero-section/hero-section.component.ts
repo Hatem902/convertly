@@ -9,6 +9,9 @@ import {
   faFileImport,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
+import { Cfile } from 'src/app/shared/models/file.model';
+import { FileType } from 'src/app/shared/models/fileType.enum';
+import { PdfServiceService } from '../../services/pdf-service.service';
 
 @Component({
   selector: 'app-hero-section',
@@ -24,31 +27,58 @@ export class HeroSectionComponent implements OnInit {
   faCircleArrowRight = faCircleArrowRight;
   faArrowRight = faArrowRight;
   faArrowsSpin = faArrowsSpin;
-  files: any; /*  = [
-    { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
-    { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
-    { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
-    { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
-    { name: 'HatemLamine_FrontEndEngineer_CV_9.pdf' },
-  ]; */
-  constructor() {}
+  files: File[] = [];
+  selectedTypes : FileType[] = [];
+  constructor(private pdfService : PdfServiceService) {}
   selectFiles() {
     document.getElementById('file')?.click();
   }
   ngOnInit(): void {}
+
   filesSelected(event: any) {
-    console.log(event.currentTarget.files);
     this.files = event.currentTarget.files;
-    console.log(this.files?.name);
   }
-  /* files: any;
-  constructor() {}
-  selectFiles() {
-    document.getElementById('files')?.click();
+  convert(){
+   let i;
+   for(i in this.files){
+    let formData = new FormData()
+    formData.append('file',this.files[i])
+    if(this.files[i].type == 'application/pdf'){
+      switch(this.selectedTypes[i]) {
+        case FileType.DOCX:
+          this.pdfService.convert_to_docx(formData).subscribe(
+            (data)=>{console.log(data)},
+            (err)=>{console.log(err)}
+          )
+          break;
+        case FileType.HTML:
+          this.pdfService.convert_to_html(formData).subscribe(
+            (data)=>{console.log(data)},
+            (err)=>{console.log(err)}
+          )
+          break;
+        case FileType.JPG:
+          this.pdfService.convert_to_images(formData).subscribe(
+            (data)=>{console.log(data)},
+            (err)=>{console.log(err)}
+          )
+          break;
+        case FileType.TEXT:
+          this.pdfService.extract_text(formData).subscribe(
+            (data)=>{console.log(data)},
+            (err)=>{console.log(err)}
+          )
+          break;
+        default:
+          break;
+      }
+    }
+   }
   }
-  ngOnInit(): void {}
-  filesSelected(event: any) {
-    console.log(event.currentTarget.files);
-    this.files = event.currentTarget.files[0];
-  } */
+
+  changeSelected(event : FileType,index : number){
+    this.selectedTypes[index]=event;
+  }
+
+
 }
