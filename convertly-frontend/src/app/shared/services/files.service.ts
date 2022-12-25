@@ -1,5 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { FileResponse } from 'src/app/shared/models/fileResponse.interface';
+import { environment } from 'src/environments/environment';
+
+const convertUrl = environment.backUrl;
 
 @Injectable({
   providedIn: 'root',
@@ -7,6 +12,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class FilesService {
   files$ = new BehaviorSubject<any>(null);
   allType$ = new BehaviorSubject<any>('...');
+
+  constructor(private http: HttpClient) {}
 
   getFiles(): Observable<any> {
     return this.files$;
@@ -30,8 +37,6 @@ export class FilesService {
     });
 
     this.files$.next([...newFiles, ...restOfFiles]);
-    newFiles.forEach((file: any) => (file.ctype = null));
-    console.log(this.files$);
   }
 
   setType(type: string, name?: string) {
@@ -73,5 +78,36 @@ export class FilesService {
           .every((file: any) => file.ctype && file.ctype != '')
       );
     }
+  }
+
+  sendFilesV1(): void {
+    this.files$.getValue().forEach((file: any) => {
+      let formData = new FormData();
+      formData.append('file', file);
+
+      this.http.post<FileResponse>(
+        convertUrl + '/' + file.type + '/' + file.ctype,
+        formData
+      );
+    });
+  }
+
+  sendFilesV2(): void {
+    const sendFile = (
+      file: any,
+      type: any,
+      ctype: any
+    ): Observable<FileResponse> => {
+      return this.http.post<FileResponse>(
+        convertUrl + '/' + type + '/' + ctype,
+        file
+      );
+    };
+
+    this.files$.getValue().forEach((file: any) => {
+      let formData = new FormData();
+      formData.append('file', file);
+      sendFile(formData, file.type, file.ctype);
+    });
   }
 }
