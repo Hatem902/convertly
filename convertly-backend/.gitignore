@@ -2,5 +2,5 @@ uploads/
 dependencies
 venv
 results/
-*.pyc
-*.pyo
+__pycache__/
+*.py[cod]
