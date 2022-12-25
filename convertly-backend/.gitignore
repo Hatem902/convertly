@@ -2,3 +2,5 @@ uploads/
 dependencies
 venv
 results/
+__pycache__/
+*.py[cod]
