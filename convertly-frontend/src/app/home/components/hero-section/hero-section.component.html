@@ -1,5 +1,5 @@
 <main
-  class="flex flex-col justify-center items-center bg-gradient-to-b from-black to-gray-600 px-12 pt-[3rem] 2xl:pt-20 transition-all ease-in-out"
+  class="flex flex-col justify-center items-center bg-gradient-to-b from-black to-gray-600 px-12 pt-[3rem] 2xl:pt-20 transition-all ease-in-out pb-56"
 >
   <!-- Introduction -->
   <div class="flex justify-center space-x-28 items-start">
@@ -20,23 +20,23 @@
   </div>
 
   <!-- Hero Button -->
-  <button class="hero-button" (click)="selectFiles()">
+  <button class="hero-button" (click)="browseFiles('chooseFiles')">
     <fa-icon [icon]="faFileImport" class="fa-sm mr-1"></fa-icon>
     Choose Files
   </button>
   <input
     type="file"
     class="hidden"
-    id="file"
-    (change)="filesSelected($event)"
+    id="chooseFiles"
+    (change)="chooseFiles($event)"
     multiple="multiple"
   />
 
   <!-- Files Rows -->
-  <div class="flex flex-col gap-y-5 mt-12 w-full max-w-[58rem]">
+  <div class="flex flex-col gap-y-4 mt-11 w-full max-w-[58rem]">
     <div
-      *ngFor="let file of files;let i=index"
-      class="flex w-full px-3 py-2 pt-3 rounded-sm bg-gray-500 bg-opacity-20 items-center tracking-wider shadow-sm shadow-black"
+      *ngFor="let file of files$ | async"
+      class="flex w-full px-3 py-1.5 pt-2.5 rounded-sm bg-gray-500 bg-opacity-20 items-center tracking-wider shadow-sm shadow-black"
     >
       <div class="flex-auto w-40 truncate mr-8">
         <fa-icon [icon]="faFileCircleCheck" class="mr-3"></fa-icon
@@ -44,44 +44,54 @@
       </div>
       <div class="flex-auto w-44 truncate mr-2">
         <fa-icon [icon]="faArrowsRotate" class="mr-3"></fa-icon> Convert to
-        <app-dropdown [type]="file.type" (event)="changeSelected($event,i)"></app-dropdown>
+        <app-dropdown [name]="file.name" [ctype]="file.ctype"></app-dropdown>
       </div>
       <div class="flex-auto w-0 truncate text-xs tracking-widest mr-4">
         {{ file.size | bitsToKbs }}
       </div>
-      <div class="flex-none hover:text-primary hover-ease">
+      <div
+        class="flex-none hover:text-primary hover-ease"
+        (click)="deleteFile(file.name)"
+      >
         <fa-icon [icon]="faTimes"></fa-icon>
       </div>
     </div>
   </div>
 
   <!-- Extra Buttons -->
-  <div *ngIf="files" class="flex w-full max-w-[58rem] justify-between mt-5">
+  <div
+    *ngIf="files$ | async"
+    class="flex w-full max-w-[58rem] justify-between mt-1.5"
+  >
     <div class="p-6 pl-0">
-      <div class="default-button">
+      <div class="default-button" (click)="browseFiles('addFiles')">
         <fa-icon [icon]="faFileCirclePlus" class="mr-6"></fa-icon>Add Files
       </div>
+      <input
+        type="file"
+        class="hidden"
+        id="addFiles"
+        (change)="addFiles($event)"
+        multiple="multiple"
+      />
     </div>
     <div class="p-6">
       <div class="default-button">
         <fa-icon [icon]="faArrowsSpin" class="mr-6 fa-lg"></fa-icon>Convert All
-        to <app-dropdown></app-dropdown>
+        to <app-dropdown name="convertAll"></app-dropdown>
       </div>
     </div>
     <div class="p-6 pr-0">
-      <div class="default-button" (click)="convert()" >
+      <div
+        class="default-button"
+        [ngClass]="
+          !typesAreValid()
+            ? 'text-gray-300 border-opacity-20 shadow-inner cursor-not-allowed hover:bg-primary hover:bg-opacity-10 hover:text-gray-300 hover:brightness-125 '
+            : 'border-opacity-100 bg-opacity-100 bg-primary'
+        "
+      >
         <fa-icon [icon]="faArrowRight" class="mr-6"></fa-icon>Convert Now
       </div>
     </div>
   </div>
-
-  <div class="pb-80"></div>
-  <div class="pb-20"></div>
 </main>
-
-<div
-  class="flex flex-col justify-center items-center bg-gradient-to-r from-black to-gray-600"
->
-  <p class="pb-48 pt-48">TEST TITLE</p>
-  <p class="pb-48 pt-48">TEST TITLE</p>
-</div>

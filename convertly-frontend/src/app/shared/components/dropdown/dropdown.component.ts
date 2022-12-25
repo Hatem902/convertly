@@ -1,35 +1,27 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FileType } from '../../models/fileType.enum';
+import { Component, Input, OnInit } from '@angular/core';
+import { FilesService } from '../../services/files.service';
+
 
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss']
+  styleUrls: ['./dropdown.component.scss'],
 })
-export class DropdownComponent implements OnInit,OnChanges {
+export class DropdownComponent implements OnInit {
+  @Input() name!: string;
+  @Input() ctype?: string;
 
-  constructor() { }
-  ngOnChanges(changes: SimpleChanges): void {
-    this.getOptions();
-  }
-  @Input('type') type : string = ''
-  @Output('event') event : EventEmitter<FileType>=new EventEmitter();
-  options : FileType[]=[]
-  ngOnInit(): void {
-    console.log('type : ')
-    this.getOptions();
-  }
+  allType$: any = this.filesService.getAllType();
 
-  getOptions(){
-    if(this.type == 'application/pdf'){
-      this.options = [FileType.DOCX,FileType.TEXT,FileType.HTML,FileType.JPG]
-    }else {
-      this.options = [FileType.DOCX]
-    }
-  }
+  constructor(private filesService: FilesService) {}
 
-  emitSelected(event:any){
-    this.event.emit(event.target.value)
+  ngOnInit(): void {}
+  filesExist(): boolean {
+    return this.filesService.filesExist();
   }
-
+  setType() {
+    var selectBox: any = document.getElementById(this.name);
+    var selectedValue = selectBox?.options[selectBox.selectedIndex].value;
+    this.filesService.setType(selectedValue, this.name);
+  }
 }

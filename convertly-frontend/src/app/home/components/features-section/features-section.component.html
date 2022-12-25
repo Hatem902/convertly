@@ -1,0 +1,26 @@
+<div
+  class="flex flex-col justify-center items-center bg-gradient-to-tr from-white to-gray-600"
+>
+  <div
+    class="grid lg:grid-cols-2 grid-cols-1 gap-16 w-full lg:max-w-[58rem] max-w-md my-32"
+  >
+    <div
+      *ngFor="let feature of features"
+      class="flex flex-col bg-gradient-to-tr from-black to-gray-600 text-white items-center gap-10 p-8 shadow-2xl shadow-black rounded-3xl"
+    >
+      <fa-icon
+        [icon]="feature.icon"
+        class="rounded-full border border-white p-5 fa-xl m-0 bg-gradient-to-tr from-black to-gray-600 text-pop shadow-2xl shadow-black"
+      ></fa-icon>
+
+      <div
+        class="text-center tracking-wider font-bold text-lg border-b border-b-4 border-primary"
+      >
+        {{ feature.title }}
+      </div>
+      <div class="text-center tracking-wide leading-7">
+        {{ feature.description }}
+      </div>
+    </div>
+  </div>
+</div>

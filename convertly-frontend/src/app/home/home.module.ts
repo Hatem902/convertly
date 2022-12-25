@@ -6,11 +6,10 @@ import { SharedModule } from '../shared/shared.module';
 import { HeroSectionComponent } from './components/hero-section/hero-section.component';
 
 import { HomeComponent } from './home.component';
-import { PdfServiceService } from './services/pdf-service.service';
+import { FeaturesSectionComponent } from './components/features-section/features-section.component';
 
 @NgModule({
-  declarations: [HomeComponent, HeroSectionComponent],
-  imports: [CommonModule,HttpClientModule, FontAwesomeModule, SharedModule],
-  providers : [PdfServiceService]
+  declarations: [HomeComponent, HeroSectionComponent, FeaturesSectionComponent],
+  imports: [CommonModule, FontAwesomeModule, SharedModule],
 })
 export class HomeModule {}

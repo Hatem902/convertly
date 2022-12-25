@@ -1,9 +1,14 @@
 <select
   name="format"
-  id="format"
-  class="bg-transparent rounded-sm focus:outline-none font-bold hover:bg-black hover-ease"
-  (change)="emitSelected($event)"
+  [id]="name"
+  class="bg-transparent rounded-sm focus:outline-none font-bold hover:bg-black hover-ease border-b border-gray-600"
+  (change)="setType()"
+  [value]="name == 'convertAll' && filesExist() ? (allType$ | async) : ctype"
 >
-  <option disabled selected value> -- select an option -- </option>
-  <option [value]="option" *ngFor="let option of options" class="text-black bg-white">{{option}}</option>
+  <option value="docx " class="text-black bg-white">docx</option>
+  <option value="pdf " class="text-black bg-white">pdf</option>
+  <option class="text-black bg-white" value="txt">txt</option>
+  <option class="text-black bg-white" value="ppt">ppt</option>
+  <option class="text-black bg-white" value="html">html</option>
+  <option class="text-black bg-white" value="xlsx">xlsx</option>
 </select>
