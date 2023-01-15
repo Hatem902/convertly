@@ -1,0 +1,41 @@
+<main
+  class="flex flex-col justify-center items-center bg-gradient-to-b from-black to-gray-600 px-12 pt-[3rem] 2xl:pt-20 transition-all ease-in-out pb-56"
+>
+ <!-- Introduction -->
+ <div class="flex justify-center space-x-28 items-start">
+    <div class="flex flex-col items-start space-y-3 max-w-lg">
+      <h1 class="text-3xl font-bold">
+        Here is a documentation for our API <span class="text-pop"> Ready For Use</span>
+      </h1>
+      <p class="tracking-wider">
+        Please follow the following guide. Contact us for help. We are 24/7 available.
+      </p>
+    </div>
+    <img
+      class="h-48 hidden sm:flex transition-all ease-in-out"
+      src="../../assets/imgs/fastapi-logo.png"
+      alt="test"
+    />
+  </div>
+  <!-- Documentation -->
+  <div class="mx-auto my-20 w-full drop-shadow rounded-md flex flex-col gap-5">
+    <!-- PDF -->
+    <div class="flex flex-col gap-2">
+    <h2 class="text-3xl font-bold">PDF</h2>
+    <app-endpoint *ngFor="let endpoint of pdfEndpoints" [method]="endpoint.method" [route]="endpoint.route" [description]="endpoint.description" [body]="endpoint.body">
+    </app-endpoint>
+</div>
+<div class="flex flex-col gap-2">
+    <!-- DOCX -->
+    <h2 class="text-3xl font-bold">DOCX</h2>
+    <app-endpoint *ngFor="let endpoint of docxEndpoints" [method]="endpoint.method" [route]="endpoint.route" [description]="endpoint.description" [body]="endpoint.body">
+    </app-endpoint>
+</div>
+<div class="flex flex-col gap-2">
+    <!-- PNG -->
+    <h2 class="text-3xl font-bold">PNG</h2>
+    <app-endpoint *ngFor="let endpoint of pngEndpoints" [method]="endpoint.method" [route]="endpoint.route" [description]="endpoint.description" [body]="endpoint.body">
+    </app-endpoint>
+</div>
+</div>
+</main>

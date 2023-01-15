@@ -8,10 +8,10 @@ import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 })
 export class NavBarComponent implements OnInit {
   navItems = [
-    { name: 'Convertly', isMain: true },
-    { name: 'API' },
-    { name: 'Formats' },
-    { name: 'Pricing' },
+    { name: 'Convertly', isMain: true, route:'/' },
+    { name: 'API', route:'/api' },
+    { name: 'Formats', route : '/' },
+    { name: 'Pricing', route : '/' },
   ];
   selectedItem = { name: 'Convertly' };
   selectItem = (name: string) => (this.selectedItem.name = name);

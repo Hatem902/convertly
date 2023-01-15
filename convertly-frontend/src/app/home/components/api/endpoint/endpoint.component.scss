@@ -1,0 +1,41 @@
+
+details > summary{
+    list-style: none !important;
+    border-radius: 6px;
+}
+details{
+    border-radius: 6px;
+}
+.method{
+    max-height: 36px;
+    background-color: #49cc90;
+    border-radius: 6px;
+    padding: 3px;
+    width: 5vw;
+    font-weight: 600;
+    min-width: 50px;
+    display: flex;
+    justify-content: center;
+}
+.route{
+    font-weight: 600;
+}
+.description{
+    font-weight: 100;
+    font-size: 15px;
+}
+.required:after{
+    content: ' *required';
+    color: rgba(255,0,0,1.6);
+    font-size: 10px;
+    margin-top: -4px;
+}
+.code{
+    background-color: rgb(51, 51, 51);
+    border-radius: 6px;
+    color: white;
+    padding: 6px;
+}
+.type{
+    color:rgb(162, 252, 162)
+}

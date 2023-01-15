@@ -7,9 +7,11 @@ import { HeroSectionComponent } from './components/hero-section/hero-section.com
 
 import { HomeComponent } from './home.component';
 import { FeaturesSectionComponent } from './components/features-section/features-section.component';
+import { ApiComponent } from './components/api/api.component';
+import { EndpointComponent } from './components/api/endpoint/endpoint.component';
 
 @NgModule({
-  declarations: [HomeComponent, HeroSectionComponent, FeaturesSectionComponent],
+  declarations: [HomeComponent, HeroSectionComponent, FeaturesSectionComponent, ApiComponent, EndpointComponent],
   imports: [CommonModule, FontAwesomeModule, SharedModule],
 })
 export class HomeModule {}

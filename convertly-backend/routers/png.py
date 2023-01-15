@@ -9,7 +9,9 @@ async def convert_to_any(type_needed,file: UploadFile):
     content = await file.read()
     url=png.convert_any_img_to_any(content,type_needed)
     if url!=False:
-        return {"file_url": url}
+        return {
+            "file_name":file.filename,
+            "file_url": url}
     else:
         raise HTTPException(status_code=500, detail="Internal Server Error")
 

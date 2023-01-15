@@ -1,0 +1,39 @@
+<details class="bg-green-100  duration-300">
+    <summary class="bg-inherit px-5 py-2 text-lg cursor-pointer border  border-green-400 flex gap-5">
+       <div class="method">{{method}}</div>
+       <div class="route text-black font-medium	">
+        {{route}} 
+       </div>
+       <div class="description text-black" >
+        {{description}}
+       </div>
+    </summary>
+    <div class="bg-white px-5 py-3 border text-black  text-sm flex flex-col gap-3 ">
+        <div class="body">
+            <p class="required font-semibold">Request body</p>
+            <span class="param flex gap-3" *ngFor="let param of body"><p [class]="param.required ? 'required' : ''">{{param.name}}</p> {{param.type}}</span>
+        </div>
+        <div class="success flex flex-col">
+            <span class="title font-semibold">
+                Successful response
+            </span>
+            <span class="code">
+                    "file_name" : <i class="type">string</i><br>
+                    "file_url" : <i class="type">string</i>
+            </span>
+        </div>
+        <div class="error flex flex-col">
+            <span class="title font-semibold">
+                Failed response
+            </span>
+            <span class="code">
+                "status": <i class="type">string</i><br>
+                "message" : <i class="type">string</i>
+        </span>
+            
+        </div>
+       
+    
+        
+    </div>
+</details>

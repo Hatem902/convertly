@@ -1,5 +1,6 @@
 <ul class="nav-bar">
-  <div class="hidden md:inline" *ngFor="let item of navItems">
+  <div class="hidden md:inline" *ngFor="let item of navItems"       [routerLink]="item.route"
+  >
     <li
       *ngIf="item.isMain"
       class="nav-item font-extrabold tracking-[0.15em] pl-[5.72rem]"

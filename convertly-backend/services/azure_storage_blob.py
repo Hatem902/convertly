@@ -10,11 +10,10 @@ def store_file_in_azure(data,extension,container_name):
         # you need to export it : 
         #linux : export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
         #windows (cmd): setx AZURE_STORAGE_CONNECTION_STRING "<yourconnectionstring>"
-        connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
-
+        connect_str = os.environ['CONNECT_STR']
+        print(connect_str)
         # Create the BlobServiceClient object
         blob_service_client = BlobServiceClient.from_connection_string(connect_str)
-
         remote_file_name = str(uuid.uuid4()) + "." + extension
         all_containers = blob_service_client.list_containers()
         already_exists=False
