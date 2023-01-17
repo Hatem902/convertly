@@ -8,6 +8,7 @@ import {
   faFileCircleCheck,
   faFileCirclePlus,
   faFileImport,
+  faSpinner,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
@@ -29,18 +30,23 @@ export class HeroSectionComponent implements OnInit {
   faCircleArrowRight = faCircleArrowRight;
   faArrowRight = faArrowRight;
   faArrowsSpin = faArrowsSpin;
+  faFileDownload = faDownload;
+  faSpinner = faSpinner;
+  spinner: boolean = false;
 
   files$: any = this.filesService.getFiles();
 
   constructor(private filesService: FilesService) {}
 
   ngOnInit(): void {}
-  redirect(fileName:string){
-    console.log(this.results)
-    console.log(fileName)
-    window.open( this.results.filter((result:FileResponse)=>{
-     return result.file_name==fileName
-    })[0].file_url)
+  redirect(fileName: string) {
+    console.log(this.results);
+    console.log(fileName);
+    window.open(
+      this.results.filter((result: FileResponse) => {
+        return result.file_name == fileName;
+      })[0].file_url
+    );
   }
   browseFiles(id: string) {
     document.getElementById(id)?.click();
@@ -57,20 +63,21 @@ export class HeroSectionComponent implements OnInit {
   typesAreValid(): boolean {
     return this.filesService.typesAreValid();
   }
-  results : FileResponse[] = []
-  convert(){
+  results: FileResponse[] = [];
+  convert() {
+    this.spinner = true;
     let functions = this.filesService.sendFilesV2();
-    functions.forEach(
-    (element:Observable<any>)=>{
-      element.subscribe(
-        (data)=>{
-          console.log(data)
-          this.results.push(data);
-          //file_name
-          //file_url
-        }
-      )
-    }
-    )
+    functions.forEach((element: Observable<any>) => {
+      element.subscribe((data) => {
+        console.log(data);
+        this.results.push(data);
+
+        //file_name
+        //file_url
+      });
+    });
+  }
+  fileSuccess(fileName: string): boolean {
+    return this.results.filter((el) => el.file_name == fileName).length != 0;
   }
 }

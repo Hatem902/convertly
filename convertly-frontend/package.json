@@ -23,6 +23,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "framer-motion": "^8.4.6",
     "rxjs": "~7.5.0",
     "tailwind": "^4.0.0",
     "tailwind-scrollbar-hide": "^1.1.7",

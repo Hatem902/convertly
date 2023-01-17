@@ -18,7 +18,7 @@ export class FilesService {
   getFiles(): Observable<any> {
     return this.files$;
   }
-  
+
   chooseFiles(event: any) {
     this.files$.next(Array.from(event.currentTarget.files));
     this.allType$.next(null);
@@ -93,16 +93,24 @@ export class FilesService {
   }
 
   sendFilesV2() {
-    let functions :any = []
+    let functions: any = [];
+    let prefix : string = ""
     const sendFile = (
       file: any,
-      type: any,
-      ctype: any
+      type: string,
+      ctype: string
     ): Observable<FileResponse> => {
-      return this.http.post<FileResponse>(
-        convertUrl  + '/image/' + ctype,
-        file
-      );
+      if(type.includes('pdf')) prefix ='pdf'
+      else if(type.includes('image'))
+      prefix = 'image'
+      else if(type.includes('sheet'))
+      prefix = 'pptx'
+      // word document 
+      else if(type.includes('vnd.openxmlformats-officedocument.wordprocessingml.document'))
+      prefix = 'docx'
+
+      return this.http.post<FileResponse>(convertUrl + '/'+prefix+'/' + ctype, file);
+
     };
 
     this.files$.getValue().forEach((file: any) => {
