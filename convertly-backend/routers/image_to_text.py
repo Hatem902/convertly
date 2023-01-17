@@ -7,7 +7,7 @@ router = APIRouter()
 async def convert_to_any(file: UploadFile):
     content = await file.read()
     url=image_to_text.convert_img_to_string(content)
-    return {"text":url}
+    return {"file_url":url}
     
 
 
