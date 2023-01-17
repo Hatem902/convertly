@@ -18,7 +18,7 @@ export class FilesService {
   getFiles(): Observable<any> {
     return this.files$;
   }
-  
+
   chooseFiles(event: any) {
     this.files$.next(Array.from(event.currentTarget.files));
     this.allType$.next(null);
@@ -93,16 +93,13 @@ export class FilesService {
   }
 
   sendFilesV2() {
-    let functions :any = []
+    let functions: any = [];
     const sendFile = (
       file: any,
       type: any,
       ctype: any
     ): Observable<FileResponse> => {
-      return this.http.post<FileResponse>(
-        convertUrl  + '/image/' + ctype,
-        file
-      );
+      return this.http.post<FileResponse>(convertUrl + '/image/' + ctype, file);
     };
 
     this.files$.getValue().forEach((file: any) => {
