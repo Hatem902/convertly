@@ -1,7 +1,7 @@
 import os, uuid
 from azure.identity import DefaultAzureCredential
 from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
-
+import io
 
 def store_file_in_azure(data,extension,container_name):
     try:
@@ -10,7 +10,7 @@ def store_file_in_azure(data,extension,container_name):
         # you need to export it : 
         #linux : export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
         #windows (cmd): setx AZURE_STORAGE_CONNECTION_STRING "<yourconnectionstring>"
-        connect_str = os.environ['CONNECT_STR']
+        connect_str = "DefaultEndpointsProtocol=https;AccountName=convertlyaymenproject;AccountKey=mfPJQpFOkzCYTTdvB0nRNX1stDVQcAq5j6zIPECHenvH2poXx/vyZ8Z1/Yz8S8PIUC6zrblS0wTw+AStRy4H4w==;EndpointSuffix=core.windows.net"
         print(connect_str)
         # Create the BlobServiceClient object
         blob_service_client = BlobServiceClient.from_connection_string(connect_str)
@@ -36,3 +36,15 @@ def store_file_in_azure(data,extension,container_name):
         print('Exception:')
         print(ex)
         return False
+
+def store_file_in_azure_from_path(file_path,extension):
+    try:
+        with open(file_path, "rb") as fh:
+            buf = io.BytesIO(fh.read())
+            result = store_file_in_azure(buf,extension=extension,container_name=extension)
+            return result
+    except Exception as ex:
+        print('Exception:')
+        print(ex)
+        return False
+    

@@ -4,6 +4,8 @@ from starlette.middleware.cors import CORSMiddleware
 from routers import pdf
 from routers import docx
 from routers import png
+from routers import pptx
+
 app = FastAPI()
 
 origins = ["*"]
@@ -19,6 +21,7 @@ app.add_middleware(
 app.include_router(pdf.router)
 app.include_router(docx.router)
 app.include_router(png.router)
+app.include_router(pptx.router)
 
 
 @app.get("/")
