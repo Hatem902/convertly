@@ -107,7 +107,9 @@ export class FilesService {
     this.files$.getValue().forEach((file: any) => {
       let formData = new FormData();
       formData.append('file', file);
-      sendFile(formData, file.type, file.ctype);
+      sendFile(formData, file.type, file.ctype).subscribe((data) => {
+        console.log(data);
+      });
     });
   }
 }

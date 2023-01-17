@@ -47,4 +47,7 @@ export class HeroSectionComponent implements OnInit {
   typesAreValid(): boolean {
     return this.filesService.typesAreValid();
   }
+  sendFiles(): void {
+    return this.filesService.sendFilesV2();
+  }
 }
