@@ -1,4 +1,4 @@
 export interface FileResponse{
-    url : string,
-    name : string
+    file_url : string,
+    file_name : string
 }
