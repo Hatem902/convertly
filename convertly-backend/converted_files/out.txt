@@ -1,0 +1,24 @@
+﻿
+Evaluation Only. Created with Aspose.Words. Copyright 2003-2022 Aspose Pty Ltd.
+
+Université de Bouira 	 Module: Traitement d'images Des sciences et des sciences appliquées                                                                                                       Année:2021/2022 Département de GE, Systs Telecom M1                                                                                                         Durée:01h30 
+EXAMEN TRAITEMENT D'IMAGES 
+Exercice 1 
+1.Quelle est la transformé que le codage JPEG utilise ? 
+2.Quelle est la taille (en octet) d’une image HSV de taille 450 × 600 pixels où chaque pixel 	est codé sur 
+	a)4 bits.    b) 32 bits. 
+3.Soient les histogrammes suivant : 
+	
+	 (a )                                  (b) 
+-	Quelle sont les informations, sur les images, que l’on peut déduire à partir de ces 	histogrammes ? 
+4. Si on filtre une image avec un filtre gaussien. Que serait le résultat en fonction de l’écart- 	type choisi ? 
+Exercice 2 
+Soit une image I de taille 10x10 pixels dont les niveaux de gris sont codés en 4 bits et vérifiant : 
+1.Construire la matrice I 
+2.Calculer et représenter l’histogramme H de l’image I 
+3.Effectuer une égalisation de l’histogramme Heq 
+4.un bruit de type imputionnel est ajouté à l’image I tel que : I(1,2)=15 ; I(6,1)=0; 	I(2,3)=15 ; I(0,3)=0; I(7,0)=15 ; 
+	a)Appliquer un filtre médian de taille 3x3 aux pixels I(1,2) ; I(6,1); I(2,3) 	-	Donner les nouvelles valeurs en détaillant le calcule. 
+b) Appliquer un filtre moyenneur de taille 3x3 aux pixels I(1,2) ; I(6,1); I(2,3) 	-	Donner les nouvelles valeurs en détaillant le calcule. 
+c)Quels est le meilleur filtre ? justifier. 
+Created with an evaluation copy of Aspose.Words. To discover the full versions of our APIs please visit: https://products.aspose.com/words/
