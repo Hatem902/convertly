@@ -26,7 +26,7 @@ export class ApiComponent implements OnInit {
   },
   {
     method : HttpMethods.POST,
-    route : '/pdf/extract-text',
+    route : '/pdf/txt',
     description : 'Extract text from PDF document',
     body : [
       {

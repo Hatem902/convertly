@@ -24,5 +24,19 @@ module.exports = {
       //font-sizes
     },
   },
-  plugins: [require("tailwind-scrollbar-hide"), require("tailwind-scrollbar")],
+  plugins: [
+    require("tailwind-scrollbar-hide"),
+    require("tailwind-scrollbar"),
+    require("daisyui"),
+  ],
+  daisyui: {
+    styled: true,
+    themes: true,
+    base: true,
+    utils: true,
+    logs: true,
+    rtl: false,
+    prefix: "",
+    darkTheme: "dark",
+  },
 };

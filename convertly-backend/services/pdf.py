@@ -31,14 +31,12 @@ def extract_text(input_file : str):
     pdfReader = PyPDF2.PdfReader(pdfFileObj)
     text = ""
     for i in range(len(pdfReader.pages)):
-        pageObj = pdfReader.getPage(i)
-        text = text + pageObj.extractText()
-        file = open('file.txt','w')
-        file.write(text)
+        pageObj = pdfReader.pages[i]
+        text = text + pageObj.extract_text()
     pdfFileObj.close()
-    with open('results/result.txt', 'w+') as f:
+    with open('result.txt', 'w+') as f:
         f.write(text)
-    result = azure_storage_blob.store_file_in_azure_from_path("results/result.txt",'txt')
+    result = azure_storage_blob.store_file_in_azure_from_path("result.txt",'txt')
     if result!=False:
         return {
             "file_name":"file.txt",
