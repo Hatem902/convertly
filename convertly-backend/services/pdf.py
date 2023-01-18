@@ -28,10 +28,9 @@ def convert_pdf_to_images(input_file : str):
 
 def extract_text(input_file : str):
     pdfFileObj = open(input_file, 'rb')
-    pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
-    print(pdfReader.numPages)
+    pdfReader = PyPDF2.PdfReader(pdfFileObj)
     text = ""
-    for i in range(pdfReader.numPages):
+    for i in range(len(pdfReader.pages)):
         pageObj = pdfReader.getPage(i)
         text = text + pageObj.extractText()
         file = open('file.txt','w')

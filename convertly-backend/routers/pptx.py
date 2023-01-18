@@ -13,7 +13,7 @@ async def convert_to_pdf(file: UploadFile):
     result = azure_storage_blob.store_file_in_azure_from_path("pptx-to-pdf.pdf",'pdf')
     if result!=False:
         return {
-            "file_name":"file.pdf",
+            "file_name":file.filename,
             "file_url": result}
     else:
         return {
@@ -29,7 +29,7 @@ async def convert_to_html(file: UploadFile):
     result = azure_storage_blob.store_file_in_azure_from_path("pptx-to-html.html",'html')
     if result!=False:
         return {
-            "file_name":"file.html",
+            "file_name":file.filename,
             "file_url": result}
     else:
         return {
