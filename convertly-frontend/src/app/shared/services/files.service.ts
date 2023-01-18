@@ -94,23 +94,28 @@ export class FilesService {
 
   sendFilesV2() {
     let functions: any = [];
-    let prefix : string = ""
+    let prefix: string = '';
     const sendFile = (
       file: any,
       type: string,
       ctype: string
     ): Observable<FileResponse> => {
-      if(type.includes('pdf')) prefix ='pdf'
-      else if(type.includes('image'))
-      prefix = 'image'
-      else if(type.includes('sheet'))
-      prefix = 'pptx'
-      // word document 
-      else if(type.includes('vnd.openxmlformats-officedocument.wordprocessingml.document'))
-      prefix = 'docx'
+      if (type.includes('pdf')) prefix = 'pdf';
+      else if (type.includes('image')) prefix = 'png';
+      else if (type.includes('sheet')) prefix = 'pptx';
+      // word document
+      else if (
+        type.includes(
+          'vnd.openxmlformats-officedocument.wordprocessingml.document'
+        )
+      )
+        prefix = 'docx';
+      /* if (type.includes('ppt')) */ else prefix = 'pptx';
 
-      return this.http.post<FileResponse>(convertUrl + '/'+prefix+'/' + ctype, file);
-
+      return this.http.post<FileResponse>(
+        convertUrl + '/' + prefix + '/' + ctype,
+        file
+      );
     };
 
     this.files$.getValue().forEach((file: any) => {

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backUrl: 'http://localhost:8000',
+  backUrl: 'https://5595-102-153-194-59.eu.ngrok.io',
 };
 
 /*

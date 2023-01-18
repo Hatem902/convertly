@@ -1,5 +1,8 @@
-<ul class="nav-bar">
-  <div class="hidden md:inline" *ngFor="let item of navItems"       [routerLink]="item.route"
+<ul class="nav-bar sticky top-0">
+  <div
+    class="hidden md:inline"
+    *ngFor="let item of navItems"
+    [routerLink]="item.route"
   >
     <li
       *ngIf="item.isMain"
